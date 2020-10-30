@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            *{margin:0;padding:0;transition:100ms;box-sizing:border-box;}
+body {
+    background:whitesmoke;
+    font-family:"YT Sans";
+}
+.none{
+    display:none;
+    animation:fade 4s linear 1;
+}
+
+iframe{
+    width:100vw;
+    height:40vh;
+}
+@keyframes fade{
+    0%{
+        opacity:1;
+        display:block;
+    }
+    90%{
+        opacity:0.1;
+        display:block;
+    }
+    100%{
+        display:none;
+    }
+}
+@keyframes srink{
+    0%{transform:scaleX(0);}
+    100%{transform:scaleX(1);}
+}
+#home{
+    //display:none;
+}
+/*TOP PART START*/
+header{
+    vertical-align:center;
+    position:fixed;
+    top:0;
+    left:0;
+    border-bottom:0.5px solid #777;
+    width:100%;
+    padding:3px;
+    height:50px;
+    z-index:2;
+    background:white;
+    transform-origin:80% 60%;
+}
+.fa{
+    color:#333;
+}
+.fa-youtube-play{
+    color:red;
+    font-size:2.7em;
+}
+.logo_text{
+    font-size:1.7em;
+    font-weight:600;
+    position:relative;
+    top:-5px;
+}
+.account,.fa-search,.fa-bell{
+    float:right;
+    font-size:2.7em;
+    margin:0 10px;
+}
+.fa-search,.fa-microphone{
+    font-size:2.4em;
+}
+img{
+    background:transparent url("https://loading.io/mod/spinner/spin/sample.gif") no-repeat;
+    background-size:cover;
+}
+.fa-microphone{
+    transform:translatex(-10px);
+}
+.fa-bell{
+margin-top:4px;
+    font-size:2em;
+}
+.fa-bell span{
+    font-size:0.5em;
+    position:absolute;
+    top:2px;
+    transform:translateX(-13px);
+    border-radius:50%;
+    height:1em;
+    width:1em;
+    text-align:center;
+    background:red;
+    font-weight:600;
+    color:white;
+}
+header .fa{
+    font-weight:100;
+}
+/*TOP PART END*/
+/*MIDDLE VIDEO PART*/
+.videos,.nots{
+    position:absolute;
+    top:50px;
+}
+.nots{
+    top:50px;
+}
+.vid{
+margin-bottom:30px;
+}
+.vid,.vid img{
+    width:100vw;
+}
+.vid p{
+    font-weight:700;
+    margin-top:-10px;
+    margin-left:10px;
+    opacity:1;
+    display:block;
+}
+.vid p:after{
+    content:"";
+    position:relative;
+    right:0px;
+    top:0px;
+    font-size:2em;
+}
+vid p::first-letter{
+
+}
+.vid span{
+    margin:0 5px;
+    color:#999;
+    margin-bottom:10px;
+}
+.bottom_space{
+    height:8vh;
+    background:whiteSmoke;
+}
+/*MIDDLE VIDEO PART END*/
+/*BOTTOM PART START*/
+footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    height:8vh;
+    border-top:1px solid #777;
+    width:100vw;
+    display:grid;
+    padding:0 4vh;
+    grid-template-columns:auto auto auto auto auto;
+    grid-gap:3vh;
+    background:white;
+}
+footer .fa{
+    font-size:2em;
+    color:grey;
+    
+}
+.fa.active{
+    color:red;
+}
+.fa:after{
+    content:attr(data-name);
+    position:absolute;
+    bottom:2px;
+    font-size:13px;
+    transform:translateX(-90%);*
+    margin:0 auto;
+}
+/*BOTTOM PART END*/
+/*Notification*/
+#notification{
+    display:none;
+}
+header .fa-arrow-left.not{
+    margin-left:0.2em;
+    font-size:2.5em;
+    transform:scaleX(1.5);
+}
+.logo_text_not{
+    font-size:1.5em;
+    margin-left:20px;
+    position:relative;
+    top:-5px;
+}
+.not_body{
+    height:100%;
+    margin-bottom:20px;
+    position:relative;
+}
+.not_body img{
+width:30vw;
+}
+.not_body p{
+display:block;
+width:70vw;
+position:absolute;
+top:0;
+left:33vw;
+}
+.not_body p span{
+    color:grey;
+}
+
+/*Search Bar*/
+.si_left{
+transform:scaleX(1.4);
+}
+.si_right{
+    float:right;
+}
+input.search{
+    outline:none;
+    border:2px solid #27b5;
+    box-shadow:0px 0px 0px #27b;
+    height:35px;
+    font-size:1.2em;
+    width:77%;
+    margin:3px;
+    margin-left:8px;
+    background:#ddd;
+}
+input.search:focus{
+    box-shadow:0px 0px 5px #27b;
+}
+*::selection{
+    background:#b22;
+}
+
+
+.sub_chan{
+    width:100%;
+}
+.sub_chan span{
+text-transform:uppercase;
+    display:inline-block;
+    height:50px;
+    width:70px;
+    vertical-align:center;
+    border-radius:50%;
+    text-align:center;
+    padding:0vh;
+    font-weight:900;
+    font-size:2em;
+}
+.body{
+    display:none;
+}
+.loader{
+position:absolute;
+height:100vh;
+width:100vw;
+    z-index:78;
+    top:0%;
+    left:0%;
+    display:grid;
+    place-items:center;
+    font-size:3em;
+    background:white;
+    transition:1s;
+}
+.loader i{
+    animation:fase 0s linear infinite;
+}
+@keyframes fase{
+    0,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+.iii{
+transform:scale(1);
+transition:1s;
+}
+.iii:hover{
+    transform:scale(1.01);
+}
+.play_video{
+    width:100vw;
+    display:grid;
+    place-items:center;
+    position:fixed;
+    display:none;
+    top:0;
+    left:0;
+}
+.play_video .p_video{
+    height:0;
+    width:0;
+    background:#fefefe;
+    transition:3s;
+}
+.play_video .p_video .h{
+    font-size:1.4em;
+    font-weight:800;
+}
+.play_video .p_video .det{
+    font-weight:100;
+    margin-left:5px;
+}
+.play_video .p_video p.icons{
+    font-size:3em;
+    display:grid;
+    grid-template-columns:auto auto auto auto auto;
+    margin-left:10px;
+}
+.play_video .p_video p.icons i{
+transition:200ms;
+}
+.play_video .p_video p.icons i:focus{
+color:#666;
+}
+.play_video .p_video .cancel{
+    font-size:3em;
+    position:fixed;
+    top:2vh;
+    left:2vh;
+    color:black;
+    text-shadow:0 0 10px red;
+}
+.fa-bell{
+    font-size:1.7em;
+}
+.fa-search{
+    font-size:1.8em;
+}
+.account{
+    font-size:2em;
+}
+
+        </style>
+    </head>
+    <body>
+    <main class="play_video">
+        <div class="p_video"></div>
+    </main>
+    <main class="loader">
+        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+    </main>
+    <main class="body">
+    <main id="notification">
+        <header><i class="fa fa-arrow-left not" onclick="change('home')"></i><span class="logo_text_not">Notifications</span><i class="fa fa-search" aria-hidden="true" onclick="search_open_not(this)"></i></header>
+<section class="nots">
+</section>
+    <footer>
+<i class="fa fa-home active" data-name="Home" data-cat=""></i>
+<i class="fa fa-compass" data-name="Explore" data-cat="trending"></i>
+<i class="fa fa-plus" data-cat="plus"></i>
+<i class="fa fa-envelope" data-name="subscriptions" data-cat="subscribed"></i>
+<i class="fa fa-plus" data-name="Library" data-cat="library"></i>
+    </footer>
+    </main>
+    <main id="home">
+    <header><i class="fa fa-youtube-play" aria-hidden="true"></i><span class="logo_text">YouTube</span><i class="fa fa-user account" data-cat="about" aria-hidden="true" onclick="cat(this)"></i><i class="fa fa-search" aria-hidden="true" onclick="search_open(this)"></i><i class="fa fa-bell" aria-hidden="true" onclick="change('notification');this.innerHTML=''"><span>4</span></i></header>
+    <section class="videos">
+    <div class="vid">
+     </div>
+    </section>
+    <footer>
+<i class="fa fa-home active" data-name="Home" data-cat=""></i>
+<i class="fa fa-compass" data-name="Explore" data-cat="trending"></i>
+<i class="fa fa-plus" data-cat="plus" data-name='      '></i>
+<i class="fa fa-envelope" data-name="subscriptions" data-cat="subscribed"></i>
+<i class="fa fa-play" data-name="Library" data-cat="library"></i>
+    </footer></main>
+    </main>
+    <script>
+        "use strict";
+var video_div,home_page,notification_page,search_page,page,header_old,notification_div;
+var indexOf =(arr, q) => arr.findIndex(item => q.toLowerCase() === item.toLowerCase());
+var about="नमस्कार हमारे इस यूटयूब की नकली वेबसाइट में आपका स्वागत है।कहिए हम क्या करे आपके लिए क्या कर सकते है?हम आपके लिए अपनी जान भी दे सकते है लेकिन हमारे जान पर मेरा अधिकार नहीं है मेरे मम्मी पापा का का हक है उसपे।अगर अपने अबतक कोड को उपवोट नहीं किया है तो कर दो अगर नहीं किया तो कोई और कर देगा😜।।।और अगर आप इस कोड को उपवोट करते है तो हम आपको 2kg गोल्ड 3kg प्लेटिनम और उम्र भर फ्री चॉकलेट आईसक्रीम मैगी चावमिन मोमोज तो नहीं दे सकते लेकिन ढेर सारा प्यार आपके लिए ।तो भाईयो और बहनों देर किस बात की अभी उपवोट करे और कमेंट भी करे।।।।";
+page={};
+var subsribed=["BB Ki Vines","T-Series","Online Tutorials"].map(function(v){
+    return v.toLowerCase();
+});
+function rand_col(){
+    return "rgba("+Math.floor(Math.random()*254)+","+Math.floor(Math.random()*254)+","+Math.floor(Math.random()*254)+","+Math.ceil(Math.random())+")";
+}
+var video=[
+{
+    id:"8n49WTTPaM0",
+    title:"BB Ki Vines- | Kyun Sameer Kyun?",
+    dur:"6:22",
+    channel:"BB Ki Vines",
+    views:"10M views",
+    upload_date:"2 days ago",
+    cat:"trending"
+},
+{
+    id:"EYXQufULCEQ",
+    title:"GIRLS DURING NAVRATRI || Sibbu Giri || Aashish Bhardwaj",
+    dur:"14:37",
+    channel:"Sibbu Giri",
+    views:"830K views",
+    upload_date:"1 days ago",
+    cat:""
+},
+{
+    id:"hs2MPHRkP9A",
+    title:"Suraj Pe Mangal Bhari | Official Trailer | Diljit | Manoj | Fatima | Abhishek Sharma | This Diwali",
+    dur:"3:17",
+    channel:"Zee Studios",
+    views:"7M views",
+    upload_date:"3 days ago",
+    cat:""
+},
+{
+    id:"zRmMNYrMlZQ",
+    title:"Poochta Hai Pagal | Wajahat Hasan | MyPhone 12 Itna Mehenga Kyu Hai?",
+    dur:"6:54",
+    channel:"Wajahat Hasan",
+    views:"52k views",
+    upload_date:"15 hours ago",
+    cat:"trending"
+},
+{
+    id:"JQ2tRVqHqOU",
+    title:"Dhasu Sir Crazy Video 🤣 | Jai Mahakal Online Classes | Jai Mahakal Online Teacher Adda 247",
+    dur:"1:05",
+    channel:"DDB News",
+    views:"2M views",
+    upload_date:"3 week ago",
+    cat:""
+},
+{
+    id:"cyhnKXNoOKw",
+    title:"5 Second Divide Trick | Divide Short Trick | Vedic Maths Division Trick | Fast Calculation Trick",
+    dur:"15:13",
+    channel:"Dear Sir",
+    views:"346K views",
+    upload_date:"1 month ago",
+    cat:"trending"
+},
+////////////////////Songs////////////////////
+{
+    id:"YLFx8dj-8lE",
+    title:"Kya Karu (Full Song) Millind Gaba Feat Ashnoor K | Parampara T | Asli Gold | Shabby | Bhushan Kumar",
+    dur:"3:20",
+    channel:"T-Series",
+    views:"31M views",
+    upload_date:"1 week ago",
+    cat:""
+},
+{
+    id:"E5OLqNuMX7o",
+    title:"LAILA - Tony Kakkar ft. Heli Daruwala | Satti Dhillon | Anshul Garg | Latest Hindi Song 2020",
+    dur:"3:06",
+    channel:"Desi Music Factory",
+    views:"4.4M views",
+    upload_date:"2 days ago",
+    cat:"trending"
+},
+{
+    id:"K-Ts-NFR62o",
+    title:"JAB TAK Full Video | M.S. DHONI -THE UNTOLD STORY | Armaan Malik, Amaal Mallik |Sushant Singh Rajput trending",
+    dur:"3:31",
+    channel:"T-Series",
+    views:"126M views",
+    upload_date:"3 years ago",
+    cat:"trending"
+},
+{
+    id:"RKioDWlajvo",
+    title:"Lehanga : Jass Manak (Official Video) Satti Dhillon | Latest Punjabi Songs | GK DIGITAL | Geet MP3",
+    dur:"3:46",
+    channel:"Geet MP3",
+    views:"962M views",
+    upload_date:"1 year ago",
+    cat:""
+},
+{
+    id:"pLhNdJNwGC8",
+    title:"Baby Girl | Guru Randhawa Dhvani Bhanushali | Remo D'Souza | Bhushan Kumar | Vee",
+    dur:"3:43",
+    channel:"T-Series",
+    views:"88M views",
+    upload_date:"3 weeks ago",
+    cat:""
+},
+{
+    id:"a0TkeUhcVrM",
+    title:"Burjkhalifa | Laxmmi Bomb | Akshay Kumar | Kiara Advani | Nikhita Gandhi | Shashi-Dj Khushi | Gagan",
+    dur:"3:25",
+    channel:"Zee Music Company",
+    views:"45M views",
+    upload_date:"6 days ago",
+    cat:""
+},
+{
+    id:"q_0uF80IZXM",
+    title:"Garmi Song | Street Dancer 3D | Varun D, Nora F, Shraddha K, Badshah, Neha K | Remo D | T-Series trending",
+    dur:"2:40",
+    channel:"T-Series",
+    views:"962M views",
+    upload_date:"9 months ago",
+    cat:""
+},
+{
+    id:"X-DDknSzELI",
+    title:"'India Waale' FULL VIDEO Song |Happy New Year | Shah Rukh Khan, Deepika Padukone",
+    dur:"3:58",
+    channel:"T-Series",
+    views:"98M views",
+    upload_date:"5 years ago",
+    cat:""
+},
+{
+    id:"tJGBVigwPlU",
+    title:"Moto (Official Video)| Ajay Hooda | Diler Kharkiya | Anjali Raghav | Latest Haryanvi Song 2020",
+    dur:"3:38",
+    channel:"DIL Music",
+    views:"451M views",
+    upload_date:"9 months ago",
+    cat:""
+},
+{
+    id:"9iIX4PBplAY",
+    title:"Sanju: KAR HAR MAIDAAN FATEH Full Video Song | Ranbir Kapoor | Rajkumar Hirani",
+    dur:"3:32",
+    channel:"T-Series",
+    views:"123M views",
+    upload_date:"2 years ago",
+    cat:""
+},
+{
+    id:"l75z7FrYRXI",
+    title:"Full Song: Muqabla | Street Dancer 3D |A.R. Rahman, Prabhudeva, Varun D, Shraddha K, Tanishk B",
+    dur:"3:03",
+    channel:"T-Series",
+    views:"261M views",
+    upload_date:"8 months ago",
+    cat:""
+},
+//EDUCATIONAL VIDEOS
+{
+    id:"U8_8fTODn5g",
+    title:"Learn C language in 30 Minutes & Start Coding For Beginners in Hindi",
+    dur:"42",
+    channel:"Technology Gyan",
+    views:"6.7M views",
+    upload_date:"2 years ago",
+    cat:"trending"
+},
+{
+    id:"Df1sbXrLVx4",
+    title:"खतरनाक Hacker बनना है तो ये जरूर सीखे 😲😲| Which Programming Languages Do HACKERS Use & Why ??",
+    dur:"8:27",
+    channel:"Technology Gyan",
+    views:"719K views",
+    upload_date:"2 months ago",
+    cat:"trending"
+},
+{
+    id:"wfaDzSL6ll0",
+    title:"5 CSS tricks every Web Developer should know in 2020",
+    dur:"14:01",
+    channel:"MDB - just code it",
+    views:"8.9K views",
+    upload_date:"3 months ago",
+    cat:""
+},
+{
+    id:"z3TgmTi42ic",
+    title:"Pure Css Custom Checkbox Design - Css Glowing Checkbox Button Effects - Tutorial",
+    dur:"11:38",
+    channel:"Online Tutorials",
+    views:"69K views",
+    upload_date:"2 year ago",
+    cat:""
+},
+{
+    id:"4o_AzewcyQY",
+    title:"Single Element CSS iPhone Box Mockup | iPhone 12 Box Mockup using Html CSS Only",
+    dur:"8:27",
+    channel:"Online Tutorials",
+    views:"12K views",
+    upload_date:"1 week ago",
+    cat:""
+},
+{
+    id:"NAes5Mux3rc",
+    title:"CSS 3D Weather Card UI Design - CSS User Interface Design Tutorial",
+    dur:"1:20",
+    channel:"Online Tutorials",
+    views:"23K views",
+    upload_date:"2 years ago",
+    cat:""
+},
+{
+    id:"CYf5grrYgis",
+    title:"CSS Responsive CARD UI Design & Hover Effects | Html5 CSS3",
+    dur:"5:09",
+    channel:"Online Tutorials",
+    views:"32K views",
+    upload_date:"3 months ago",
+    cat:""
+},
+{
+    id:"yNBObeTWvio",
+    title:"Simple Product Card UI Design using Html & CSS | E-commerce Card Design Tutorial",
+    dur:"5:57",
+    channel:"Online Tutorials",
+    views:"18K views",
+    upload_date:"2 months ago",
+    cat:""
+},
+{
+    id:"DcWfNty83S4",
+    title:"Top 11 Awesome CSS Animation & Transition You Can't Miss",
+    dur:"3:38",
+    channel:"Thapa Technical",
+    views:"1K views",
+    upload_date:"2 years ago",
+    cat:""
+},
+{
+    id:"Bq-rIZ_RHvk",
+    title:"PILOTS पर लगायी गयी 11 सबसे सक्त पाबंदियाँ Things Pilot Can't Do in Cockpit of a Plane",
+    dur:"12:54",
+    channel:"GetsetflyFACT",
+    views:"192K views",
+    upload_date:"16 hours ago",
+    cat:"trending"
+}
+];
+video=video.sort(function(a, b){return 0.5 - Math.random()});
+var nvideo=video.sort(function(a, b){return 0.5 - Math.random()});
+onload= function(){
+setTimeout(function(){
+    document.querySelector(".body").style.display="block";   
+document.querySelector(".loader").style.opacity=0;
+setTimeout(function(){
+document.querySelector(".loader").style.display="none";
+},1200)
+},4000)
+
+//define_evething;
+page.home=document.getElementById("home");
+page.notification=document.getElementById("notification");
+page.play_video=document.querySelector(".play_video");
+video_div=document.querySelector(".videos");
+notification_div=document.querySelector(".nots");
+//add videos on home screen
+video_div.innerHTML="";
+video.forEach(function(vid){
+video_div.innerHTML +=`<div data-vid="${vid.id}" class="vid iii"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${vid.id}/mqdefault.jpg"><p>${vid.title.slice(0,40)+"..."}</p><span>${vid.channel}</span><span>${vid.views}</span><span>${vid.upload_date}</span></div></div>`;
+})
+video_div.innerHTML += "<div class='bottom_space'><div>"
+/*VIDEO ADDED*/    
+/*Add notification*/
+notification_div.innerHTML="";
+nvideo.forEach(function(not){
+notification_div.innerHTML +=` <div class="not_body iii" data-vid="${not.id}"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${not.id}/sddefault.jpg"><p>${not.channel} uploaded: ${not.title.slice(0,30)+"..."}<br /><span>${not.upload_date}</span></p></div><br>`;
+})
+notification_div.innerHTML += "<div class='bottom_space'><div>"
+/*Notification Added*/
+
+}
+
+
+function change(id="home"){
+for(var i in page){page[i].style.display="none"}
+document.getElementById(id).style.display="block";
+}
+function search_open(e){
+    e.parentNode.style.transform="scale(0)";
+    e.parentNode.style.transform="scale(1)";
+header_old=e.parentNode.innerHTML;
+    e.parentNode.innerHTML=`<i class="fa fa-arrow-left si_left" onclick="search_close(this)"></i>`+"<input class='search shome' oninput='search(this)' type='text' placeholder='Search YouTube'>"+`<i class="fa fa-microphone si_right"></i>`;
+    document.querySelector(".shome").focus()
+}
+function search_open_not(e){
+    e.parentNode.style.transform="scale(0)";
+    e.parentNode.style.transform="scale(1)";
+header_old=e.parentNode.innerHTML;
+    e.parentNode.innerHTML=`<i class="fa fa-arrow-left si_left" onclick="search_close(this)"></i>`+"<input class='search snot' oninput='search_not(this)' type='text' placeholder='Search YouTube'>"+`<i class="fa fa-microphone si_right"></i>`;
+    document.querySelector(".snot").focus()
+}
+function search_close(e){
+    e.parentNode.innerHTML=header_old;
+    onload();
+}
+function search(e){
+var s=e.value.toLowerCase();
+video_div.innerHTML=""
+video.forEach(function(k){
+var title=k.title.toLowerCase();
+var channel=k.channel.toLowerCase();
+if(title.search(s)>=0||channel.search(s)>=0){
+        video_div.innerHTML +=`<div class="vid iii" data-vid="${k.id}"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${k.id}/sddefault.jpg"><p>${k.title.slice(0,40)+"..."}</p><span>${k.channel}</span><span>${k.views}</span><span>${k.upload_date}</span></div></div>`;
+    }
+})
+video_div.innerHTML += "<div class='bottom_space'><div>";
+open_vid();
+}
+function search_not(e){
+var s=e.value.toLowerCase();
+notification_div.innerHTML=""
+video.forEach(function(k){
+var title=k.title.toLowerCase();
+var channel=k.channel.toLowerCase();
+if(title.search(s)>=0||channel.search(s)>=0){
+notification_div.innerHTML +=`<div data-vid="${k.id}" class="not_body iii"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${k.id}/sddefault.jpg"><p>${k.channel} uploaded: ${k.title.slice(0,30)+"..."}<br /><span>${k.upload_date}</span></p></div><br>`;
+    }
+})
+notification_div.innerHTML += "<div class='bottom_space'><div>";
+open_vid();
+}
+
+function cat(c=""){
+change("home")
+//alert("jdj")
+var s=c.getAttribute("data-cat");
+//alert(s)
+Array.from(document.querySelectorAll('footer i')).forEach(function(node){
+    node.classList.remove("active")
+})
+c.classList.add('active')
+video_div.innerHTML="";
+
+if(s=="subscribed"){
+
+var tex="";
+tex +="<div class='sub_chan'>";
+subsribed.forEach(function(chan){
+tex +="<span style='background:"+rand_col()+"'>";
+chan.split(" ").forEach(function(c){
+    tex +=c[0];   
+})
+tex +="</span>";
+})
+tex +="</div>";
+video_div.innerHTML +=tex;
+//alert(tex)
+video=video.sort(function(a, b){return 0.5 - Math.random()});
+video.forEach(function(k){
+var title=k.title.toLowerCase();
+var channel=k.channel.toLowerCase();
+var cate=k.cat.toLowerCase();
+if(subsribed.includes(channel)){
+video_div.innerHTML +=`<div data-vid="${k.id}" class="vid iii"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${k.id}/sddefault.jpg"><p>${k.title.slice(0,40)+"..."}</p><span>${k.channel}</span><span>${k.views}</span><span>${k.upload_date}</span></div></div>`;}})
+}else if(s=="plus"){
+    video_div.innerHTML =`<h1 style='padding:4vh'>ज्यादा वीडियो बनाने का सोख है आपको?🤨नहीं बना सकते वीडियो जगह नहीं है वीडियो रखने का हमारे पास जितना वीडियो है उतने में काम चला लो <br>
+समझे की समझाए?<br>
+क्या बोल रहे हो?
+क्लाउड स्टोरेज में रखु वीडियो?
+पागल वागल हो क्या क्लाउड में पानी रखने का गजह नहीं है आपके लिए उसमे वीडियो को रखे।
+अगर वीडियो बनाना है तो बनाओ लेकिन खबरदार हमारे YouTube पर अपलोड किया तो</h1>`;
+    
+}else if(s=="library"){
+    video_div.innerHTML =`<h1 style='padding:4vh'>हमारे इस वेबसाईट पर आप निम्नलखित चीज़े देख सकते है
+<ul>
+<li>इतिहास(history) भूगोल इत्यादी</li>
+<li>watch letter(i don't know ki love letter hai ya sucide letter)</li>
+<li>Your Channel(कभी सकल देखा है आइने में?🧐 अच्छा है सकल लेकिन...</li>
+<li>Downloads(फोन में नेट है नहीं और आए डाउनलोड करने वीडियो😏)</li>
+<li>Movies</li>
+<li>Music</li>
+</ul></h1>`;
+}else if(s=="about"){
+    video_div.innerHTML =`<h2 style='padding:4vh'>${about}</h2>`;
+}else{
+video.forEach(function(k){
+var title=k.title.toLowerCase();
+var channel=k.channel.toLowerCase();
+var cate=k.cat.toLowerCase();
+
+if(cate.search(s)>=0||title.search(s)>=0||channel.search(s)>=0){
+video_div.innerHTML +=`<div data-vid="${k.id}" class="vid iii"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${k.id}/sddefault.jpg"><p>${k.title.slice(0,40)+"..."}</p><span>${k.channel}</span><span>${k.views}</span><span>${k.upload_date}</span></div></div>`;
+ }
+})}
+video_div.innerHTML += "<div class='bottom_space'><div>";
+open_vid();
+}
+
+    </script>
+    <script>
+       var but1,but2; document.querySelector(".fa-bell").innerHTML="<span>"+Math.ceil(Math.random()*9)+"</span>";
+        Array.from(document.querySelectorAll("footer i")).forEach(function(node){
+    node.setAttribute("onclick","cat(this)")
+});
+setTimeout(open_vid,1000)
+function open_vid(){
+
+Array.from(document.querySelectorAll("img")).forEach(function(i){
+i.addEventListener("click",function(){
+    //alert(this.parentNode.getAttribute("data-vid"))
+    
+    })
+})
+
+Array.from(document.querySelectorAll(".iii")).forEach(function(video){
+    video.onclick=function(e){
+        var vid=this.getAttribute("data-vid");
+        //alert(vid);
+        v_player(vid)
+    }
+})}
+function v_player(id){
+page.home.style.display="none";
+var play_con=document.querySelector(".play_video");
+var play= document.querySelector(".p_video");
+play.style.height="300vh";
+play.style.width="100vw";
+play_con.style.display="block";
+play_con.style.zIndex="55567";
+video=video.sort(function(a, b){return 0.5 - Math.random()});
+video.forEach(function(not){
+
+if(not.id==id){
+play.innerHTML=`
+<i class="fa fa-arrow-left cancel" onclick="change('home')"></i>
+<iframe src="https://www.youtube.com/embed/${id}?autoplay=1"></iframe>
+<p class="h">${not.title.slice(0,50)}</p>
+<p class="det"><span>${not.views}</span>•<span> ${not.upload_date}</span></p>
+<p class="icons"><i onclick="like()" class="fa fa-thumbs-up like"></i><i onclick="dislike()" class="fa fa-thumbs-down dislike"></i><i class="fa fa-share"></i><i class="fas fa-plus-circle"></i><i class="fa fa-download"></i></p>
+
+`;
+}else{
+play.innerHTML +=`<div class="rel_vid"></div>`;
+var rel=document.querySelector(".rel_vid");
+rel.innerHTML +=` <div class="not_body iii" data-vid="${not.id}"><img src="https://cors-anywhere.herokuapp.com/http://img.youtube.com/vi/${not.id}/sddefault.jpg"><p>${not.channel} uploaded: ${not.title.slice(0,30)+"..."}<br /><span>${not.upload_date}</span></p></div><br>`;
+but1=document.querySelector(".like");
+but2=document.querySelector(".dislike");
+}
+});
+open_vid();
+}
+
+function like() { 
+but1.style.color = but1.style.color === 'blue' ? 'black': 'blue'; but2.style.color = 'black';
+ }
+
+ function dislike() { but1.style.color = 'black'; but2.style.color = but2.style.color === 'blue' ? 'black' : 'blue'; }
+    </script>
+    </body>
+</html>
